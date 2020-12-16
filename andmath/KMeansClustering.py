@@ -1,5 +1,5 @@
 import numpy as np
-from general_functions import get_centroid, get_distance
+from .general_functions import get_centroid, get_distance
 
 class KMeansClustering():
     def __init__(self, data, K=3, max_iterations=1000):

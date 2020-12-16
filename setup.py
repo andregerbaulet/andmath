@@ -4,8 +4,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="andmath", # Replace with your own username
-    version="1.0.0",
+    name="andmath",
+    version="1.0.5",
     author="André Gerbaulet",
     author_email="andregerbaulet@gmail.com",
     description="A small math and statistics package",
