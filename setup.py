@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="andmath",
-    version="1.0.5",
+    version="1.0.8",
     author="André Gerbaulet",
     author_email="andregerbaulet@gmail.com",
     description="A small math and statistics package",

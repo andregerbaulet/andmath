@@ -1,6 +1,6 @@
+import andmath as am
 import numpy as np
 import matplotlib.pyplot as plt
-from .. import KMeansClustering
 import time
 
 mu_1 = .2
@@ -21,7 +21,7 @@ data = np.concatenate((d_1, d_2, d_3), axis=0)
 np.random.shuffle(data)
 
 t0 = time.time()
-clustering = KMeansClustering(data)
+clustering = am.KMeansClustering(data)
 t1 = time.time()
 
 print('Time to find clusters: ', round(1000*(t1-t0)), 'ms', sep='')

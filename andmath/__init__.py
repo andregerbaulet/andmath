@@ -1,2 +1,2 @@
 from .KMeansClustering import KMeansClustering
-from .GaussianProcess import GaussianProcess
+from .GaussianProcessRegression import GaussianProcessRegression
