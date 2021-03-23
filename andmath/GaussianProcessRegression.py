@@ -34,9 +34,9 @@ class GaussianProcessRegression():
         self.K_predictive_predictive = kernel_matrix(self.x_prediction, self.x_prediction, kernel=kernel, tuner=tuner)
 
 
-        self.mean_f_star = np.dot(np.dot(self.K_predictive_observed, np.linalg.inv(self.K_observed_observed + sigma * np.identity(self.K_observed_observed.shape[0]))), self.y_observed.T)
-        self.covariance_f_star = self.K_predictive_predictive - np.dot(np.dot(self.K_predictive_observed, np.linalg.inv(self.K_observed_observed + sigma * np.identity(self.K_observed_observed.shape[0]))), self.K_observed_predictive)
-        self.covariance_y_star = self.covariance_f_star + sigma * np.identity(self.K_predictive_predictive.shape[0])
+        self.mean_f_star = np.dot(np.dot(self.K_predictive_observed, np.linalg.inv(self.K_observed_observed + (sigma ** 2) * np.identity(self.K_observed_observed.shape[0]))), self.y_observed.T)
+        self.covariance_f_star = self.K_predictive_predictive - np.dot(np.dot(self.K_predictive_observed, np.linalg.inv(self.K_observed_observed + (sigma ** 2) * np.identity(self.K_observed_observed.shape[0]))), self.K_observed_predictive)
+        self.covariance_y_star = self.covariance_f_star + (sigma ** 2) * np.identity(self.K_predictive_predictive.shape[0])
 
     def get_regression(self):
         return self.mean_f_star
