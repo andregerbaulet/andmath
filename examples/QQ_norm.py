@@ -2,26 +2,32 @@
 from andmath.QQ import *
 
 import numpy as np
-from scipy.stats import norm
+from scipy import stats
 import matplotlib.pyplot as plt
 import time
 
-mu = 0
-sigma = 1
+# HOW MANY POINTS SHOULD BE GENERATED
+n = 1000
 
-n = 10000
-x = np.random.normal(mu, sigma, n)
+# GENERATE DATA FROM DIFFERENT DISTRIBUTIONS
+selector = 3
+if selector == 1:
+    mu = 0
+    sigma = 1
+    x = np.random.normal(mu, sigma, n)
+elif selector == 2:
+    df = 10
+    x = np.random.standard_t(df, n)
+elif selector == 3:
+    a = 1
+    b = 2
+    x = np.random.beta(a, b, n)
 
-def cdf(v):
-    return norm.cdf(v, mu, sigma)
-
-theoretical_quantile, observed_quantile = QQ(x, cdf)
+# SELECT SCIPY DISTRIBUTION TO USE FOR THEORETICAL QUANTILES
+scipy_distribution = stats.norm
 
 fig, ax = plt.subplots(1, 1)
-ax.scatter(theoretical_quantile, observed_quantile)
-ax.plot((0, 1), (0, 1), 'b--')
-ax.set_xlabel('Theoretical quantile')
-ax.set_ylabel('Observed quantile')
-ax.set_title('QQ plot')
+# GENERATE QQ-VALUES AND PLOT ON ax
+theoretical_quantile, observed_quantile = QQ(x, scipy_distribution, ax=ax)
 plt.tight_layout()
 plt.show()
